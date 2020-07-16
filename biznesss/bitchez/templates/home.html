@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customer</title>
+</head>
+<body>
+    {%block content%}
+    <br>
+<div class ="row">
+    
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          PENDING
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{pending}}</li>
+        </ul>
+      </div>
+        <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          DELIVERED
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{delivered}}</li>
+        </ul>
+      </div>
+      
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          TOTAL ORDERS
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{total}}</li>
+        </ul>
+      </div>
+      </div>
+</div>
+      </div>
+    
+</div>      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  
+      <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                        <div class="col-sm-4">
+                            <div class="search-box">
+                                <i class="material-icons">&#xE8B6;</i>
+                                <input type="text" class="form-control" placeholder="Search&hellip;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <a href="{% url 'new_order' %}" class="btn btn-secondary btn-lg">Create new order</a>
+                </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            
+                            <th>Product</i></th>
+                            <th>Date Ordered</th>
+                            <th>Status </th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                            
+                        </tr>  
+                        
+                        {% for i in orders %}
+                        <tr>
+                         <td><a href="{% url 'customer' i.customer_id %}" class="btn btn-primary">View</a></td>
+                          <td>{{i.product}}</td>
+                          <td>{{i.date_created}}</td>
+                          <td>{{i.status}}</td>
+                          <td><a href="{% url 'update_order' i.id%}" class="btn btn-primary">update</a></td>
+                          <td><a href="{% url 'delete_order' i.id%}" class="btn btn-danger">Remove</a></td>
+                        </tr>
+                        {%endfor%} 
+                          
+                          
+                               
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>  
+    </div>
+    {%endblock%}
+</body>
+</html>
