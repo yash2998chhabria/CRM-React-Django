@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{tag.Title}}</h1> <small>  BY:{{tag.author}}</small>
+
+{% if user.is_authenticated %}
+    {% if user.id == tag.author.id %}
+        <a href="{% url 'updateb' tag.id %}">edit</a>&nbsp;
+        <a href="{% url 'deleteb' tag.id %}">delete</a>
+    {%endif%}
+    
+    
+{%endif%}
+<br><hr>
+
+
+<br>
+{{tag.body|safe}}
+<!-- {% if user.is_authenticated %} -->
+    
+    
+    
+<!-- {%endif%}&nbsp; -->
+<!-- {{totall}}<h2>likes</h2> -->
+<br><br><a href="{% url 'home' %}">BACK</a>
+<form action="{% url 'likef' tag.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit", name="p_id", value="{{tag.id}}">comment</button>
+    {% if liked %}
+        <button type="submit", name="post_id", value="{{tag.id}}">UNLIKE</button>
+    {%else%}
+        <button type="submit", name="post_id", value="{{tag.id}}">LIKE</button>
+    {%endif%}
+</form>
+
+<br><br>
+<h2>COMMENTS:</h2><hr>
+
+{% if not tag.comments.all %}
+    <h2> no comments yet</h2> <form method="POST">
+        {% csrf_token %}
+        
+        {{commentform.as_p}}
+
+
+        <button>post</button>
+{%else%}
+    {% for i in tag.comments.all %}
+        <strong>{{i.name}}---
+        {{i.body}}
+        {% if user.is_authenticated %}
+            <a href="{% url 'deletec' i.id %}">delete</a><br><br><br>
+        {% endif %}
+        {{i.date_created}}
+        </strong><br>
+        {{i.body}}<br><br><br>    
+    {%endfor%}
+    
+{%endif%}
+<br><hr>
+
+<!-- <div class="card-body">
+    
+    
+    
+    <h3>Leave a comment</h3>
+   
+   
+  </div>      -->
+    
+
+
+
+{% endblock %}

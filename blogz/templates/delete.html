@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+<h1>delete</h1>
+{% if user.is_authenticated %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <strong>
+            Are you sure you want to delete-
+        </strong>    
+        {{tag.Title}}?<br><br>
+        <button>Delete</button>
+        <a href="{% url 'home' %}">BACK</a>
+{% endif %}
+
+
+{% endblock %}
