@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<h1>POSTS</h1><br><br>
+{% if user.is_authenticated %}
+    <a href="{% url 'logoutf' %}">logout</a>
+{%else%}
+<a href="{% url 'loginf' %}">login</a>
+{%endif%}
+
+
+<a href="{% url 'createb' %}">add post</a><br><br><br>
+
+{% for tag in object_list %}
+<a href="{% url 'detail' tag.id %}">{{tag.Title}}</a>   ||    {{tag.author}}
+{% if user.is_authenticated %}
+    {% if user.id == tag.author.id %}
+        <a href="{% url 'updateb' tag.id %}"><small>edit</small></a>
+        <a href="{% url 'deleteb' tag.id %}"><small>delete</small></a>
+    {%endif%}    
+{% endif %}<br>
+{{tag.snippet}}
+<!-- <br>{{tag.body| slice:":300"|safe}}.... -->
+<a href="{% url 'detail' tag.id %}">View</a><br>
+<br>
+
+{% endfor %}
+{% endblock %}
