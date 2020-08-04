@@ -42,7 +42,7 @@ class sproduct extends React.Component {
         //     />)}
         //     </div>
         <Item.Group >
-          <StallDetailVieww name={this.state.product_name}/>
+          
         {data.map(item=>{
         // {item.product.map(prod => (<span>{prod.product_name} {prod.price}</span>))}
          return <Item>
