@@ -27,7 +27,7 @@ handleFormSubmit=(event,requestType,stallID)=>{
           .catch(error=> console.error(error));
 
         case 'put':
-          return axios.put(`http://127.0.0.1:8000/api/${stallID}/`,{
+          return axios.put(`http://127.0.0.1:8000/api/editstall/${stallID}/`,{
             name:name,
             description:description,
             contact_stall:contact_stall
