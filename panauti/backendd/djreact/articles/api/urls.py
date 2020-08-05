@@ -1,11 +1,12 @@
-from .views import ArticleView,ProductListView,StallListView,StallDetailView
+from .views import ArticleView,ProductListView,StallListView,StallDetailView,StallCRUDView
 from django.urls import path,include
 
 
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('', ArticleView, basename='userviewset')
+router.register('article', ArticleView, basename='userviewset')
+router.register('editstall', StallCRUDView, basename='stallcrud')
 urlpatterns = router.urls
 
 urlpatterns = [

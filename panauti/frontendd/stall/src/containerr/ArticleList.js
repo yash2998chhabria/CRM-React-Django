@@ -45,7 +45,7 @@ class ArticleListView extends React.Component {
     // }
     componentDidMount() {
         
-        axios.get('http://127.0.0.1:8000/api/')
+        axios.get('http://127.0.0.1:8000/api/article/')
             .then(res => {
                 // const sr=res.data
                 // console.log(sr);
@@ -63,8 +63,7 @@ class ArticleListView extends React.Component {
                 <Articles data={this.state.articless} />
             <h1>Create a new blog</h1>
 
-            {
-            this.props.isAuthenticated ?
+            
             
             <Acustomform 
             requestType = "post"
@@ -72,16 +71,10 @@ class ArticleListView extends React.Component {
             btnText="Create"
             />
             
-            :
+            
               
             
-            <Acustomform 
-            requestType = "null"
-            articleID = {null}
-            btnText="Login To create"
-            />
             
-            }
             </div>
             
             

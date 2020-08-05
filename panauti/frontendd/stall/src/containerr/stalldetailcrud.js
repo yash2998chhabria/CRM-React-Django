@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, Button } from 'antd';
 import axios from 'axios';
-import Acustomform from '../component/ArticleCRUD'; 
-import {  Item, Label ,Message, List} from 'semantic-ui-react'
-import {  Avatar, Space } from 'antd';
+import StallCRUDView from '../component/StallCRUD'; 
+// import {  Item, Label ,Message, List} from 'semantic-ui-react'
+// import {  Avatar, Space } from 'antd';
 
 
 
-class StallDetailVieww extends React.Component {
+class StallDetailViewCRUD extends React.Component {
     // constructor(props){
     //         super(props);
     //         this.state = {
@@ -21,12 +21,12 @@ class StallDetailVieww extends React.Component {
     }
     componentDidMount() {
         const stallID = this.props.match.params.stallID;
-        axios.get(`http://127.0.0.1:8000/api/stall/${stallID}`)
+        axios.get(`http://127.0.0.1:8000/api/editstall/${stallID}`)
             .then(res => {
                 // const sr=res.data
                 // console.log(sr);
-                this.setState({data:res.data });
-                this.setState({products:res.data.product})
+                this.setState({data:res.data});
+                
                 console.log(this.state.data);
                 console.log(this.state.products);
             })
@@ -46,16 +46,16 @@ class StallDetailVieww extends React.Component {
     
 
     render(){
-        let products =this.state.products;
+        // let products =this.state.products;
         return(
             <div>
-                {products.map((prodd)=>(
+                {/* {products.map((prodd)=>(
                     <h4>
                         Name:{prodd.product_name}<br/>
                         Img:{prodd.product_image}<br/>
                         Price:{prodd.price}<br/>
                     </h4>
-                ))}
+                ))} */}
                 <h1>{this.props.name}</h1>
             <Card title={this.state.data.name}>
                 <p>Description{this.state.data.description}</p>
@@ -78,6 +78,12 @@ class StallDetailVieww extends React.Component {
             <br />
             <br />
             <br />
+            <StallCRUDView 
+                requestType = "put"
+                stallID = {this.props.match.params.stallID}
+                // initialV={this.props.article}
+                btnText="Update"
+                 />
             {/* <Acustomform 
                 requestType = "put"
                 articleID = {this.props.match.params.articleID}
@@ -93,4 +99,4 @@ class StallDetailVieww extends React.Component {
     }
 
 }
-export default StallDetailVieww;
+export default StallDetailViewCRUD;
