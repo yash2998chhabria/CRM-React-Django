@@ -35,3 +35,13 @@ class StallSerializer(serializers.ModelSerializer):
             permissions.AllowAny
         ]
         fields ='__all__'
+
+class StallCRUDSerializer(serializers.ModelSerializer):
+    product= ProductSerializer(many=True)
+    class Meta:
+        model=stall_frames
+        permission_classes =[
+            permissions.AllowAny
+        ]
+        # fields ='__all__'
+        exclude = ['stall_user','premium']

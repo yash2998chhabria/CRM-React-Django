@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Icon,Loader, Image, Item, Label ,Message} from 'semantic-ui-react'
 import Axios from 'axios'
-// import StallDetailVieww  from './StallDetailView'
+import StallDetailVieww  from './StallDetailView'
 
 
 
@@ -42,7 +42,7 @@ class sproduct extends React.Component {
         //     />)}
         //     </div>
         <Item.Group >
-          
+          <StallDetailVieww name={this.state.product_name}/>
         {data.map(item=>{
         // {item.product.map(prod => (<span>{prod.product_name} {prod.price}</span>))}
          return <Item>
@@ -57,7 +57,7 @@ class sproduct extends React.Component {
             <Item.Description>Description:{item.description}</Item.Description>
             <Item.Extra>
               <Button primary floated='right'>
-               {<a href={`stalls/${item.id}`}>{"VisitStall"}</a>} 
+              {<a href={`stalls/${item.id}`}>{"VisitStall"}</a>}
                 <Icon name='right chevron' />
               </Button>
               <Label>Limited</Label>

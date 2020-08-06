@@ -1,5 +1,5 @@
 from rest_framework.generics import ListAPIView,RetrieveAPIView
-from .serializers import ArticleSerializer,ProductSerializer,StallSerializer,NormStallSerializer
+from .serializers import ArticleSerializer,ProductSerializer,StallSerializer,NormStallSerializer,StallCRUDSerializer
 from articles.models import Article,stall_products,stall_frames
 from rest_framework import viewsets
 
@@ -24,6 +24,11 @@ class StallListView(ListAPIView):
 
 class StallDetailView(RetrieveAPIView):
     serializer_class = StallSerializer
+    queryset = stall_frames.objects.all()
+
+
+class StallCRUDView(viewsets.ModelViewSet):
+    serializer_class = StallCRUDSerializer
     queryset = stall_frames.objects.all()
 
 

@@ -17,7 +17,7 @@ handleFormSubmit=(event,requestType,articleID)=>{
 
     switch(requestType){
         case 'post':
-          return axios.post('http://127.0.0.1:8000/api/',{
+          return axios.post('http://127.0.0.1:8000/api/article/',{
               title:title,
               content:content
           })
@@ -25,7 +25,7 @@ handleFormSubmit=(event,requestType,articleID)=>{
           .catch(error=> console.error(error));
 
         case 'put':
-          return axios.put(`http://127.0.0.1:8000/api/${articleID}/`,{
+          return axios.put(`http://127.0.0.1:8000/api/article/${articleID}/`,{
               title:title,
               content:content
           })

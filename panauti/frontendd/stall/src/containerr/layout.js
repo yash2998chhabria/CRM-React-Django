@@ -32,6 +32,20 @@ class CustomLayout extends React.Component{
 
                 }
                 
+                {
+                    this.props.isAuthenticated ?
+                    <Menu.Item key="3">
+                         <Link to="/yourstall">YourStall</Link>
+                    </Menu.Item>
+                    
+                :
+                    
+                    <Menu.Item key="3">
+                       <Link to="/login">YourStall</Link> 
+                    </Menu.Item>
+
+                }
+                
                 
              
             </Menu>
