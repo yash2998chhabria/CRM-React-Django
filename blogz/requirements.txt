@@ -19,6 +19,6 @@ pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
 toml==0.10.1
-virtualenv==20.0.26
+virtualenv==20.36.1
 virtualenvwrapper-win==1.2.6
 wrapt==1.12.1
